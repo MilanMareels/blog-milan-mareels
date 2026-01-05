@@ -13,14 +13,7 @@ type Props = {
   slug: string;
 };
 
-export function HeroPost({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}: Props) {
+export function HeroPost({ title, coverImage, date, excerpt, author, slug }: Props) {
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -39,9 +32,18 @@ export function HeroPost({
         </div>
         <div>
           <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+
+          <div className="mb-6">
+            <Link href={`/posts/${slug}`} className="bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-8 duration-200 transition-colors inline-block">
+              Read More
+            </Link>
+          </div>
+
           <Avatar name={author.name} picture={author.picture} />
         </div>
       </div>
     </section>
   );
 }
+
+export default HeroPost;
