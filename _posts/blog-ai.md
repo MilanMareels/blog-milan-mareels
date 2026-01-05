@@ -2,7 +2,7 @@
 title: "Will AI Replace Programmers? My Honest Take"
 excerpt: "Recently, I've been hearing that AI will replace programmers. As a student and founder, I believe real programming goes far beyond generating code. Here is why architecture, logic, and human insight remain essential."
 coverImage: "/assets/blog/ai/AI.webp"
-date: "2024-01-05T05:35:07.322Z"
+date: "2026-01-05T05:35:07.322Z"
 author:
   name: Milan Mareels
   picture: "/assets/blog/authors/milan-mareels.webp"

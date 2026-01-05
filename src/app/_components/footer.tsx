@@ -1,5 +1,4 @@
 import Container from "@/app/_components/container";
-import { ThemeSwitcher } from "./theme-switcher";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,7 +19,7 @@ export function Footer() {
               Visit Lannie.be
             </a>
             <a href="https://milanmareels.be" target="_blank" rel="noopener noreferrer" className="mx-3 font-bold hover:underline">
-              Mijn Portfolio
+              My Portfolio
             </a>
           </div>
         </div>
