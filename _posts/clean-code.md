@@ -1,8 +1,8 @@
 ---
-title: 'De Kunst van Clean Code: Waarom "Werken" Niet Genoeg Is'
-excerpt: "Software kan aan de voorkant perfect werken, terwijl de achterkant aan elkaar hangt van duct tape. Waarom Clean Code essentieel is voor leefbare software en respect voor je team."
+title: "The Art of Clean Code: Why “It Works” Isn't Enough"
+excerpt: "Software can work perfectly on the front end, while the back end is held together by duct tape. Why Clean Code is essential for viable software and respect for your team."
 coverImage: "/assets/blog/clean-code/clean-code.webp"
-date: "2026-01-06T05:35:07.322Z"
+date: "2026-01-08T05:35:07.322Z"
 author:
   name: Milan Mareels
   picture: "/assets/blog/authors/milan-mareels.webp"
@@ -10,67 +10,67 @@ ogImage:
   url: "/assets/blog/clean-code/clean-code.webp"
 ---
 
-Softwareontwikkeling is een vreemd vak. Een schilder ziet meteen of zijn werk rommelig is. Een timmerman ziet direct of een kast scheef staat. Maar bij software? Een applicatie kan aan de voorkant perfect werken, terwijl de achterkant de code aan elkaar hangt van duct tape en pleisters.
+Software development is a strange profession. A painter can immediately see if his work is messy. A carpenter can immediately see if a cabinet is crooked. But with software? An application can work perfectly on the front end, while the code on the back end is held together with duct tape and bandages.
 
-Mijn reis in de IT begon tijdens mijn Graduaat opleiding. Daar leerde ik de syntax: hoe krijg ik de computer zover dat hij doet wat ik wil? Maar nu, tijdens mijn Bachelor opleiding, is mijn perspectief verschoven. Het gaat niet meer alleen om functionaliteit, maar om kwaliteit.
+My IT journey began during my graduate studies (Graduaat), where I first learned the principles of Clean Code. Now, during my bachelor's degree, I find it frustrating to see that code quality is often overlooked. While many students focus solely on the 'it works' mindset, I believe we should aim higher. For me, software development is no longer just about functionality it is about quality and craftsmanship.
 
-Ik ben op een punt gekomen dat ik Clean Code niet alleen belangrijk vind, maar dat het ontbreken ervan me oprecht frustreert. Waarom? Omdat slechte code respectloos is naar je teamgenoten en je toekomstige zelf. In deze blogpost neem ik je mee in mijn visie op leefbare, begrijpbare software.
+I've reached a point where I not only consider Clean Code important, but the lack of it genuinely frustrates me. Why? Because bad code is disrespectful to your teammates and your future self. In this blog post, I'll share my vision for livable, understandable software.
 
-## 1. Code is Communicatie (Begrijpbaarheid)
+## 1. Code is Communicatie (Comprehensibility)
 
-Er heerst een misverstand dat programmeurs code schrijven voor computers. Dat is onzin. Computers lezen binaire code (nullen en enen). Broncode (zoals JavaScript, C# of Java) schrijven we voor mensen.
+There's a misconception that programmers write code for computers. That's nonsense. Computers read binary code (zeros and ones). We write source code (like JavaScript, C#, or Java) for people.
 
 ### Cognitive Load
 
-Een belangrijk concept dat ik tijdens mijn research tegenkwam, is **Cognitive Load**. Elke keer dat een developer een stuk code leest en moet denken: _"Wacht even, wat doet variabele x hier ook alweer?"_, stijgt de mentale belasting.
+An important concept I came across during my research is **Cognitive Load**. Every time a developer reads a piece of code and has to think: _"Wait a minute, what does variable x do here again?"_, the mental burden increases.
 
-Als jouw code vol zit met onduidelijke afkortingen, gigantische functies en slimme "hacks", put je het brein van je lezer uit. Het gevolg? Fouten. Bugs. Frustratie.
+If your code is cluttered with obscure abbreviations, gigantic functions, and clever "hacks," you're exhausting your reader's brain. The result? Errors. Bugs. Frustration.
 
-Clean Code verlaagt die cognitieve belasting. Het leest als een boek.
+Clean code reduces that cognitive load. It reads like a book.
 
-**Slecht:**
+**Bad:**
 
 ```javascript
-const d = 10; // verstreken dagen
+const d = 10; // days passed since last login
 ```
 
-**Goed:**
+**Good:**
 
 ```javascript
 const daysSinceLastLogin = 10;
 ```
 
-In het tweede geval is commentaar overbodig, omdat de code zichzelf uitlegt.
+In the second case, comments are superfluous, because the code is self-explanatory.
 
-## 2. Leefbaarheid en Technical Debt
+## 2. Livability and Technical Debt
 
-Tijdens projecten op mijn opleiding merk ik vaak dat studenten snel resultaat willen zien. "Het werkt toch?" zeggen ze dan. Maar dat is kortetermijndenken.
+During projects in my program, I often notice that students want to see quick results. "It works, right?" they'll say. But that's short-term thinking.
 
-Slechte code creëert wat we in de industrie **Technical Debt** noemen. Zie het als een financiële lening. Je kunt nu tijd besparen door rommelige code te schrijven (snel geld lenen), maar later betaal je rente. Die rente betaal je in de vorm van:
+Bad code creates what we in the industry call **Technical Debt**. Think of it as a financial loan. You can save time now by writing messy code (borrowing money quickly), but later you'll pay interest. You pay that interest in the form of:
 
-- Extra tijd die nodig is om simpele features toe te voegen.
-- Bugs die opduiken op plekken waar je ze niet verwacht.
-- Nieuwe developers die dagen nodig hebben om het project te begrijpen.
+- Extra time needed to add simple features.
+- Bugs that pop up in places you don't expect them.
+- New developers who need days to understand the project.
 
-Mijn doel in mijn Bachelor-projecten is om die schuld op nul te houden. Ik wil dat mijn code over een jaar nog steeds 'leefbaar' is.
+My goal in my Bachelor's projects is to keep that debt at zero. I want my code to still be "viable" a year from now.
 
-### De Boy Scout Rule
+### The Boy Scout Rule
 
-Robert C. Martin (Uncle Bob) introduceerde een prachtige regel die ik altijd probeer toe te passen: _"Leave the campground cleaner than you found it."_ Zie je ergens rommelige code in een bestand waar je aan werkt? Ruim het op, ook al heb jij het niet geschreven.
+Robert C. Martin (Uncle Bob) introduced a wonderful rule that I always try to apply: _"Leave the campground cleaner than you found it."_ Do you see messy code in a file you're working on? Clean it up, even if you didn't write it.
 
-> **Noot:** Wees hier wel verstandig in. Ga niet de hele applicatie verbouwen vlak voor een deadline, dat veroorzaakt conflicten. Verbeter kleine dingen stap voor stap.
+> **Note:** Be sensible about this. Don't rebuild the entire application just before a deadline, that will cause conflicts. Improve small things step by step.
 
-## 3. Structuur en Complexiteit: Less is More
+## 3. Structure and Complexity: Less is More
 
-Naast naamgeving zijn de structuur van je if-statements en de grootte van je functies bepalend voor de kwaliteit. Hier maak je als developer het verschil tussen junior en senior gedrag.
+Besides naming, the structure of your if statements and the size of your functions determine quality. This is where, as a developer, you differentiate between junior and senior behavior.
 
-### Stop met Nesten: Gebruik "Guard Clauses"
+### Stop Nesting: Use "Guard Clauses"
 
-Je kent het wel: een if in een if in een if. Dit noemen we de "Arrow Head" stijl, omdat de code steeds verder naar rechts inspringt in de vorm van een pijlpunt. Dit is funest voor de leesbaarheid. Je moet als lezer continu onthouden in welke conditie je zit.
+You know how it is: an if within an if within an if. This is called the "Arrow Head" style, because the code indents further and further to the right in the shape of an arrowhead. This is detrimental to readability. As a reader, you constantly have to remember which condition you're in.
 
-De oplossing is simpel: **Return Early**. Draai de logica om.
+The solution is simple: **Return Early**. Turn the logic around.
 
-**Diep geneste code:**
+**Deeply nested code:**
 
 ```javascript
 function saveUser(user) {
@@ -84,7 +84,7 @@ function saveUser(user) {
 }
 ```
 
-**Clean Code met Guard Clauses:**
+**Clean Code with Guard Clauses:**
 
 ```javascript
 function saveUser(user) {
@@ -96,39 +96,126 @@ function saveUser(user) {
 }
 ```
 
-Het resultaat is exact hetzelfde, maar de mentale belasting is veel lager. Je handelt de randgevallen direct af en vergeet ze daarna.
+The result is exactly the same, but the mental burden is much lower. You handle the edge cases immediately and forget about them.
 
-### Functies: Hoe kleiner, hoe beter
+### Functions: The smaller the better
 
-Een van de meest gemaakte fouten die ik zie (en zelf ook maakte), zijn functies van 50 of 100 regels code.
+One of the most common mistakes I see (and sometimes still make myself) is functions of 50 or 100 lines of code.
 
-Een functie zou zich moeten houden aan het **Single Responsibility Principle**. Een functie moet één ding doen, en dat ding goed doen.
+A function should adhere to the **Single Responsibility Principle**. A function should do one thing, and do it well.
 
-- Moet je scrollen om de hele functie te zien? Te groot.
-- Bevat de functie het woord "en" (bv. `validateAndSaveUser`)? Te groot (splits het op in `validateUser` en `saveUser`).
+- Do you have to scroll to see the full feature? It's too big.
+- Does the function contain the word "and" (e.g. `validateAndSaveUser`)? Too large (split it into `validateUser` and `saveUser`).
 
-Kleine functies zijn makkelijker te lezen, makkelijker te testen en makkelijker te hergebruiken. Als een functie klein is, is de kans op bugs nihil, simpelweg omdat er geen plek is voor bugs om zich te verstoppen.
+Small functions are easier to read, easier to test, and easier to reuse. If a function is small, the chance of bugs is minimal, simply because there's nowhere for bugs to hide.
 
-## 4. Mijn Gereedschapskist: Automatiseer Kwaliteit
+### The "Bad" Approach
 
-Je hoeft niet te vertrouwen op wilskracht alleen. In mijn setup (VS Code) gebruik ik tools die mij dwingen netjes te werken. Dit raad ik iedereen aan:
+This function violates the Single Responsibility Principle. It validates data, handles database logic, formats strings, and sends emails all in one place. It is difficult to test and hard to read.
 
-### De Linter (ESLint)
+```javascript
+function registerAndNotifyUser(userData) {
+  // 1. Validation Logic
+  if (!userData.email || !userData.email.includes("@")) {
+    throw new Error("Invalid email address");
+  }
+  if (userData.password.length < 8) {
+    throw new Error("Password must be at least 8 characters");
+  }
 
-Een Linter is als een strenge leraar die over je schouder meekijkt. Hij analyseert je code terwijl je typt. Gebruik je een variabele die niet bestaat? Linter waarschuwt. Maak je een lus die nooit eindigt? Linter ziet het. Dit voorkomt domme fouten nog voordat je de code draait.
+  // 2. Database Logic
+  const dbConnection = database.connect();
+  const existingUser = dbConnection.find({ email: userData.email });
+  if (existingUser) {
+    throw new Error("User already exists");
+  }
+
+  // 3. Data Transformation
+  const user = {
+    id: Date.now(),
+    email: userData.email,
+    passwordHash: someHashFunction(userData.password),
+    createdAt: new Date(),
+  };
+  dbConnection.save(user);
+
+  // 4. Notification Logic
+  const emailService = new EmailService();
+  const emailTemplate = `<h1>Welcome, ${user.email}!</h1>`;
+  emailService.send(user.email, "Welcome to our platform", emailTemplate);
+
+  return user;
+}
+```
+
+### The "Good" Approach (Clean Code)
+
+Here, the logic is split into small, focused functions. The main function, `registerUser`, acts as an orchestrator. It reads like a sentence, making it immediately clear what the code does without getting bogged down in implementation details.
+
+```javascript
+// Main Orchestrator
+function registerUser(userData) {
+  validateUserData(userData);
+  const user = createUser(userData);
+  sendWelcomeEmail(user);
+  return user;
+}
+
+// Small, Reusable Helper Functions
+function validateUserData(userData) {
+  if (!isValidEmail(userData.email)) {
+    throw new Error("Invalid email address");
+  }
+  if (!isValidPassword(userData.password)) {
+    throw new Error("Password must be at least 8 characters");
+  }
+  checkUserExistence(userData.email);
+}
+
+function checkUserExistence(email) {
+  const dbConnection = database.connect();
+  const existingUser = dbConnection.find({ email: email });
+  if (existingUser) {
+    throw new Error("User already exists");
+};
+
+function createUser(userData) {
+  const user = {
+    id: Date.now(),
+    email: userData.email,
+    passwordHash: someHashFunction(userData.password),
+    createdAt: new Date(),
+  };
+  database.save(user);
+  return user;
+}
+
+function sendWelcomeEmail(user) {
+  const emailService = new EmailService();
+  emailService.send(user.email, "Welcome!", renderWelcomeTemplate(user));
+}
+```
+
+## 4. My Toolbox: Automate Quality
+
+You don't have to rely on willpower alone. In my setup (VS Code), I use tools that force me to work neatly. I recommend this to everyone:
+
+### The Linter (ESLint)
+
+A Linter is like a strict teacher looking over your shoulder. It analyzes your code as you type. Are you using a variable that doesn't exist? Linter warns you. Are you creating a loop that never ends? Linter sees it. This prevents silly mistakes before you even run the code.
 
 ### Prettier (Formatter)
 
-Ik weiger om nog discussies te voeren over spaties versus tabs of waar de accolades `{` moeten staan. Ik gebruik de Prettier extensie in VS Code. Ik heb mijn editor zo ingesteld op "Format on Save". Ik typ mijn code, ram op `Ctrl+S`, en poef: mijn code verspringt naar de perfecte uitlijning. Het geeft rust in je hoofd en zorgt voor een uniforme stijl in het hele team.
+I refuse to argue about spaces versus tabs or where the curly braces `{` should go anymore. I use the Prettier extension in VS Code. I have my editor set to "Format on Save." I type my code, hit `Ctrl+S`, and poof: my code snaps into perfect alignment. It gives you peace of mind and ensures a consistent style across the team.
 
-## 5. De Lakmoesproef: Dirty vs. Clean Code
+## 5. The Litmus Test: Dirty vs. Clean Code
 
-Laten we de theorie in de praktijk brengen met een voorbeeld dat alles combineert: naamgeving, structuur en returns.
+Let's put theory into practice with an example that combines everything: naming, structure, and returns.
 
-**Dirty Code (De "Het Werkt Toch?" Methode)**
+**Dirty Code (The "It Works Anyway?" Method)**
 
 ```javascript
-// Wat gebeurt hier? Wat is 0.1? Wat is type 2?
+// What's going on here? What's 0.1? What's type 2?
 function check(u) {
   if (u.type === 2 && u.yrs > 5) {
     return u.amt * 0.1;
@@ -138,9 +225,9 @@ function check(u) {
 }
 ```
 
-Dit is pijnlijk om te lezen. Als ik dit over twee maanden terugzie, moet ik de hele database doorzoeken om te weten wat type 2 betekent.
+This is painful to read. If I look back at this in two months, I'll have to search the entire database to find out what type 2 means.
 
-**Clean Code (De Professionele Methode)**
+**Clean Code (The Professional Method)**
 
 ```javascript
 const GOLD_CUSTOMER_TYPE = 2;
@@ -148,44 +235,46 @@ const LOYALTY_THRESHOLD_YEARS = 5;
 const DISCOUNT_RATE = 0.1;
 
 function calculateLoyaltyDiscount(customer) {
-  // 1. Duidelijke variabelen
+  // 1. Clear variables
   const isGoldCustomer = customer.type === GOLD_CUSTOMER_TYPE;
 
   const isLoyalLongTerm = customer.yearsActive > LOYALTY_THRESHOLD_YEARS;
 
-  // 2. Early return voor snelle exit
+  // 2. Early return for a quick exit
   if (!isGoldCustomer || !isLoyalLongTerm) {
     return 0;
   }
 
-  // 3. De berekening is nu triviaal
+  // 3. The calculation is now trivial
   return customer.totalAmount * DISCOUNT_RATE;
 }
 ```
 
-Hier zie je direct de bedrijfslogica. We gebruiken constanten om "Magic Numbers" te vermijden en de flow is glashelder.
+Here you can immediately see the business logic. We use constants to avoid "Magic Numbers," and the flow is crystal clear.
 
-## 6. De Clean Code Checklist voor je PR
+## 6. The Clean Code Checklist for your PR
 
-Voordat ik een Pull Request (PR) indien of mijn code commit, loop ik in mijn hoofd altijd dit lijstje af. Je kunt dit kopiëren en gebruiken voor je volgende project:
+Before I submit a Pull Request (PR) or commit my code, I always run through this checklist in my head. You can copy it and use it for your next project:
 
-- **Leesbaarheid:** Kan een junior developer begrijpen wat hier staat zonder dat ik het uitleg?
-- **Naming:** Zijn mijn variabelenamen beschrijvend (geen `x`, `data` of `temp`)?
-- **Complexiteit:** Heb ik diepe nesting (if in if in if) voorkomen door 'Guard Clauses' (Early Returns) te gebruiken?
-- **Single Responsibility:** Doen mijn functies slechts één ding en zijn ze klein genoeg (idealiter < 20 regels)?
-- **Tooling:** Is het bestand geformatteerd met Prettier en geeft de Linter geen errors meer?
+- **Readability:** Can a junior developer understand what's written here without me explaining it?
+- **Naming:** Are my variable names descriptive (no `x`, `data`, or `temp`)?
+- **Complexity:** Have I prevented deep nesting (if within if within if) by using guard clauses (early returns)?
+- **Single Responsibility:** Do my functions do only one thing and are they small enough (ideally < 20 lines)?
+- **Tooling:** Is the file formatted with Prettier and does the Linter no longer return errors?
 
-## Conclusie
+## Conclusion
 
-De overstap van Graduaat naar Bachelor heeft me doen inzien dat programmeren meer is dan logica kloppen; het is vakmanschap. Het frustreert me als medestudenten of collega's slordig zijn, omdat het laat zien dat ze niet nadenken over de houdbaarheid van hun werk.
+The transition from graduate to bachelor's degree made me realize that programming is more than just making sense, it's craftsmanship. It frustrates me when fellow students or colleagues are sloppy, because it shows they're not thinking about the sustainability of their work.
 
-Clean Code is een investering. Het kost in het begin 10% meer tijd, maar het bespaart je aan het einde 200% aan ellende. Laten we trots zijn op wat we bouwen, niet alleen op de buitenkant, maar ook onder de motorkap.
+Clean code is an investment. It takes 10% more time upfront, but it saves you 200% of the hassle in the end. Of course, the cases I’ve discussed here are just simple examples merely the tip of the iceberg. There is a vast landscape of design patterns, refactoring techniques, and architectural principles that we can all continue to master.
 
-### Bronvermelding & Onderzoek
+Let's be proud of what we build, not just on the outside, but also under the hood.
 
-Voor dit artikel en mijn dagelijkse werkzaamheden heb ik mij gebaseerd op de volgende bronnen:
+### Citation & Research
 
-- Martin, R. C. (2008). [_Clean Code: A Handbook of Agile Software Craftsmanship_](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882). Prentice Hall. (Hét standaardwerk over dit onderwerp).
-- Thomas, D., & Hunt, A. (2019). [_The Pragmatic Programmer: Your Journey to Mastery_](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/). Addison-Wesley Professional.
-- Fowler, M. [_Refactoring_](https://refactoring.com/). (Online resources via martinfowler.com).
+For this article and my daily work, I relied on the following sources:
+
+- Martin, R. C. (2008). [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882). Prentice Hall. (The standard work on this subject).
+- Thomas, D., & Hunt, A. (2019). [The Pragmatic Programmer: Your Journey to Mastery](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/). Addison-Wesley Professional.
+- Fowler, M. [Refactoring](https://refactoring.com/). (Online resources via martinfowler.com).
 - McConnell, S. (2004). [_Code Complete: A Practical Handbook of Software Construction_](https://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670). Microsoft Press.
