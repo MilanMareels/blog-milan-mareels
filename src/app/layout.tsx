@@ -10,11 +10,53 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const SITE_URL = "https://www.blog.milanmareels.be";
+
 export const metadata: Metadata = {
-  title: "Blog | Milan Mareels",
-  description: "A personal blog by Milan Mareels. Here I share my projects, insights, and my unvarnished opinions on tech, AI, Testing, and web development.",
+  metadataBase: new URL(SITE_URL),
+
+  title: {
+    template: "%s | Milan Mareels - Tech, AI & Web Development",
+    default: "Milan Mareels | Full Stack Developer, AI & Testing Blog",
+  },
+  keywords: ["Next.js", "React", "Web Development", "Clean Code", "AI", "Testing", "Software Engineering", "Milan Mareels", "Tech Blog Belgium"],
+  description: "A personal blog by Milan Mareels sharing insights on Clean Code, AI, Testing, and modern web development.",
+
+  publisher: "Milan Mareels",
+  authors: [{ name: "Milan Mareels", url: SITE_URL }],
+  creator: "Milan Mareels",
+
+  alternates: {
+    canonical: "/",
+  },
+
   openGraph: {
-    images: [HOME_OG_IMAGE_URL],
+    title: "Milan Mareels | Full Stack Developer & Tech Blog",
+    description: "Insights regarding Clean Code, AI, and Software Craftsmanship.",
+    url: SITE_URL,
+    siteName: "Milan Mareels Tech Blog",
+    images: [
+      {
+        url: HOME_OG_IMAGE_URL,
+        width: 1200,
+        height: 630,
+        alt: "Milan Mareels Blog Cover",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -23,6 +65,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const globalSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "Milan Mareels Blog",
+        description: "Insights on tech, AI, and web development.",
+        publisher: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+      {
+        "@type": "Person",
+        "@id": `${SITE_URL}/#person`,
+        name: "Milan Mareels",
+        url: SITE_URL,
+        sameAs: ["https://linkedin.com/in/milanmareels"],
+      },
+    ],
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -34,6 +99,8 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }} />
       </head>
       <body className={cn(inter.className, "dark:bg-slate-900 dark:text-slate-400")}>
         <ThemeSwitcher />
