@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Security protections (generic)
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /cgi-bin/
+Disallow: /private/
+
+Sitemap: https://www.blog.milanmareels.be/sitemap.xml
