@@ -16,7 +16,7 @@ My IT journey began during my graduate studies (Graduaat), where I first learned
 
 I've reached a point where I not only consider Clean Code important, but the lack of it genuinely frustrates me. Why? Because bad code is disrespectful to your teammates and your future self. In this blog post, I'll share my vision for livable, understandable software.
 
-## 1. Code is Communicatie (Comprehensibility)
+## 1. Code is Communication (Comprehensibility)
 
 There's a misconception that programmers write code for computers. That's nonsense. Computers read binary code (zeros and ones). We write source code (like JavaScript, C#, or Java) for people.
 
