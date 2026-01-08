@@ -99,7 +99,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-
+        <meta name="google-site-verification" content="xQptRvZ6etRrEmjGfJ48DMkar0KNedlzIr1hPfie9GI" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }} />
       </head>
       <body className={cn(inter.className, "dark:bg-slate-900 dark:text-slate-400")}>
