@@ -50,6 +50,12 @@ Ik zie zulke mensen dagelijks: ze gebruiken AI om code te genereren en kopiëren
 
 Een **echte programmeur** is iemand die denkt, begrijpt en creëert met een specifieke intentie. Dit is wat een goede programmeur onderscheidt van een normale.
 
+## De kracht van de combinatie
+
+Dit betekent echter niet dat we AI moeten negeren. Integendeel. Ontwikkelaars die hun vak verstaan én AI weten te gebruiken, hebben een enorme voorsprong. Als je de code begrijpt, de 'waarom' achter beslissingen kent, en AI gebruikt als een krachtige motor om sneller te werken, ben je bijna niet te stoppen.
+
+Er is wel degelijk sprake van competitie, maar niet tegen de AI zelf. De competitie is met andere ontwikkelaars. Iemand die goed kan coderen maar weigert AI te gebruiken, zal het uiteindelijk afleggen tegen iemand die net zo goed kan coderen maar AI gebruikt om zijn productiviteit te verdubbelen. Het gaat om de synergie tussen menselijk inzicht en machinale snelheid.
+
 ## De toekomst van coderen
 
 Dus, geloof ik dat AI programmeurs zal vervangen, inclusief mijzelf?

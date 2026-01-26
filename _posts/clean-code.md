@@ -12,7 +12,7 @@ ogImage:
 
 Softwareontwikkeling is een vreemd beroep. Een schilder ziet meteen of zijn werk slordig is. Een timmerman ziet meteen of een kast scheef staat. Maar bij software? Een applicatie kan aan de voorkant perfect werken, terwijl de code aan de achterkant met plakband en verband aan elkaar hangt.
 
-Mijn IT-reis begon tijdens mijn graduaatstudie, waar ik voor het eerst de principes van Clean Code leerde. Nu, tijdens mijn bacheloropleiding, vind ik het frustrerend om te zien dat codekwaliteit vaak over het hoofd wordt gezien. Terwijl veel studenten zich uitsluitend richten op de 'het werkt'-mentaliteit, geloof ik dat we hoger moeten mikken. Voor mij draait softwareontwikkeling niet langer alleen om functionaliteit – het gaat om kwaliteit en vakmanschap.
+Mijn IT-reis begon tijdens mijn graduaatstudie, waar ik voor het eerst de principes van Clean Code leerde. Nu, tijdens mijn bacheloropleiding, vind ik het frustrerend om te zien dat codekwaliteit vaak over het hoofd wordt gezien. Terwijl veel studenten zich uitsluitend richten op de 'het werkt'-mentaliteit, geloof ik dat we hoger moeten mikken. Voor mij draait softwareontwikkeling niet langer alleen om functionaliteit het gaat om kwaliteit en vakmanschap.
 
 Ik heb een punt bereikt waarop ik Clean Code niet alleen belangrijk vind, maar het gebrek eraan me oprecht frustreert. Waarom? Omdat slechte code respectloos is tegenover je teamgenoten en je toekomstige zelf. In deze blogpost deel ik mijn visie op leefbare, begrijpelijke software.
 
@@ -56,7 +56,7 @@ Mijn doel in mijn bachelorprojecten is om die schuld op nul te houden. Ik wil da
 
 ### De padvindersregel (The Boy Scout Rule)
 
-Robert C. Martin (Uncle Bob) introduceerde een prachtige regel die ik altijd probeer toe te passen: _"Laat de kampeerplek schoner achter dan je hem aantrof."_ Zie je rommelige code in een bestand waar je aan werkt? Ruim het op, zelfs als jij het niet hebt geschreven.
+Robert C. Martin introduceerde een prachtige regel die ik altijd probeer toe te passen: _"Laat de kampeerplek schoner achter dan je hem aantrof."_ Zie je rommelige code in een bestand waar je aan werkt? Ruim het op, zelfs als jij het niet hebt geschreven.
 
 > **Opmerking:** Wees hier verstandig in. Ga niet de hele applicatie herbouwen vlak voor een deadline, dat veroorzaakt conflicten. Verbeter kleine dingen stap voor stap.
 
@@ -250,29 +250,29 @@ function calculateLoyaltyDiscount(customer) {
 }
 ```
 
-Here you can immediately see the business logic. We use constants to avoid "Magic Numbers," and the flow is crystal clear.
+Hier zie je direct de bedrijfslogica. We gebruiken constanten om "magische getallen" te vermijden, en het proces is glashelder.
 
 ## 6. The Clean Code Checklist for your PR
 
-Before I submit a Pull Request (PR) or commit my code, I always run through this checklist in my head. You can copy it and use it for your next project:
+Voordat ik een pull request (PR) indien of mijn code commit, doorloop ik altijd eerst deze checklist in mijn hoofd. Je kunt hem kopiëren en gebruiken voor je volgende project:
 
-- **Readability:** Can a junior developer understand what's written here without me explaining it?
-- **Naming:** Are my variable names descriptive (no `x`, `data`, or `temp`)?
-- **Complexity:** Have I prevented deep nesting (if within if within if) by using guard clauses (early returns)?
-- **Single Responsibility:** Do my functions do only one thing and are they small enough (ideally < 20 lines)?
-- **Tooling:** Is the file formatted with Prettier and does the Linter no longer return errors?
+- **Leesbaarheid:** Kan een junior ontwikkelaar begrijpen wat hier staat zonder dat ik het hoef uit te leggen?
+- **Naamgeving:** Zijn mijn variabelenamen beschrijvend (geen `x`, `data` of `temp`)?
+- **Complexiteit:** Heb ik diepe nesting (if binnen if binnen if) voorkomen door guard clauses (vroege returns) te gebruiken?
+- **Enkele verantwoordelijkheid:** Doen mijn functies maar één ding en zijn ze klein genoeg (idealiter < 20 regels)?
+- **Tools:** Is het bestand geformatteerd met Prettier en geeft de linter geen fouten meer?
 
-## Conclusion
+## Conclusie
 
-The transition from graduate to bachelor's degree made me realize that programming is more than just making sense, it's craftsmanship. It frustrates me when fellow students or colleagues are sloppy, because it shows they're not thinking about the sustainability of their work.
+De overgang van master naar bachelor deed me beseffen dat programmeren meer is dan alleen logisch redeneren; het is vakmanschap. Het frustreert me als medestudenten of collega's slordig te werk gaan, omdat het laat zien dat ze niet nadenken over de duurzaamheid van hun werk.
 
-Clean code is an investment. It takes 10% more time upfront, but it saves you 200% of the hassle in the end. Of course, the cases I’ve discussed here are just simple examples merely the tip of the iceberg. There is a vast landscape of design patterns, refactoring techniques, and architectural principles that we can all continue to master.
+Schone code is een investering. Het kost je 10% meer tijd vooraf, maar het bespaart je uiteindelijk 200% van de moeite. Natuurlijk zijn de voorbeelden die ik hier heb besproken slechts het topje van de ijsberg. Er is een enorm scala aan ontwerppatronen, refactoringtechnieken en architectuurprincipes die we allemaal kunnen blijven beheersen.
 
-Let's be proud of what we build, not just on the outside, but also under the hood.
+Laten we trots zijn op wat we bouwen, niet alleen aan de buitenkant, maar ook onder de motorkap.
 
-### Citation & Research
+### Citaat & Onderzoek
 
-For this article and my daily work, I relied on the following sources:
+Voor dit artikel en mijn dagelijkse werkzaamheden heb ik gebruikgemaakt van de volgende bronnen:
 
 - Martin, R. C. (2008). [Clean Code: A Handbook of Agile Software Craftsmanship](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882). Prentice Hall. (The standard work on this subject).
 - Thomas, D., & Hunt, A. (2019). [The Pragmatic Programmer: Your Journey to Mastery](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/). Addison-Wesley Professional.

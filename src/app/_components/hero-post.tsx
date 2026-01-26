@@ -35,7 +35,7 @@ export function HeroPost({ title, coverImage, date, excerpt, author, slug }: Pro
 
           <div className="mb-6">
             <Link href={`/posts/${slug}`} className="bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-8 duration-200 transition-colors inline-block">
-              Read More
+              Lees Meer
             </Link>
           </div>
 
