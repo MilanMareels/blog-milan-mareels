@@ -66,7 +66,6 @@ export default async function Post(props: Params) {
 
   const content = await markdownToHtml(post.content || "");
 
-  // 2. Structured Data (Schema.org) voor BlogPosting
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",

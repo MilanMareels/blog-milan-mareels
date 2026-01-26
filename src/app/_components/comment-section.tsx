@@ -8,7 +8,7 @@ type Comment = {
   created_at: string;
   author: string;
   content: string;
-  is_approved: boolean; // Nieuw veld
+  is_approved: boolean;
 };
 
 export default function CommentSection({ slug }: { slug: string }) {

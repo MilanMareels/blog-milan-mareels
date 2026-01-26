@@ -1,8 +1,8 @@
 ---
-title: "Will AI Replace Programmers? My Honest Take"
-excerpt: "Recently, I've been hearing that AI will replace programmers. As a student and founder, I believe real programming goes far beyond generating code. Here is why architecture, logic, and human insight remain essential."
+title: "Zal AI programmeurs vervangen? Mijn eerlijke mening"
+excerpt: "De laatste tijd hoor ik vaak dat AI programmeurs zal vervangen. Als student en oprichter geloof ik dat echt programmeren veel verder gaat dan code genereren. Hier is waarom architectuur, logica en menselijk inzicht essentieel blijven."
 coverImage: "/assets/blog/ai/AI.webp"
-date: "2026-01-05T05:35:07.322Z"
+date: "2026-01-26T05:35:07.322Z"
 author:
   name: Milan Mareels
   picture: "/assets/blog/authors/milan-mareels.webp"
@@ -10,59 +10,59 @@ ogImage:
   url: "/assets/blog/ai/AI.webp"
 ---
 
-Hey everyone,
+Hallo iedereen,
 
-Recently, I have been hearing that AI will replace programmers. Developers will become obsolete in the near future, and AI will do everything better or so people say.
+De laatste tijd hoor ik vaak dat AI programmeurs zal vervangen. Ontwikkelaars zouden in de nabije toekomst overbodig worden en AI zou alles beter doen althans, dat zeggen mensen.
 
-But the truth is, any person who has been involved in a real, large-scale software project knows that it is not that straightforward. I am talking here from my personal experience. Yes, I am still a software development student and the founder of **Lannie**, a company where I build websites for businesses, but I see what AI is capable of (and what it is not) every single day.
+Maar de waarheid is dat iedereen die betrokken is geweest bij een echt, grootschalig softwareproject weet dat het niet zo eenvoudig ligt. Ik spreek hier uit persoonlijke ervaring. Ja, ik ben nog steeds student softwareontwikkeling en oprichter van [Lannie](https://www.lannie.be), een bedrijf waarmee ik websites bouw voor bedrijven, maar ik zie elke dag waartoe AI in staat is (en waartoe niet).
 
-## The Complexity Trap
+## De complexiteitsval
 
-AI is able to write code, and at times, even better than I could. However, when the project gets complicated for example, with dozens of files, layers, dependencies, and tests the AI loses its way very quickly.
+AI kan code schrijven, en soms zelfs beter dan ik. Echter, wanneer het project ingewikkeld wordt bijvoorbeeld met tientallen bestanden, lagen, afhankelijkheden en tests raakt de AI heel snel de weg kwijt.
 
-**AI does not comprehend the overall picture or the logic behind the design choices.**
+**AI begrijpt het totaalplaatje of de logica achter de ontwerpkeuzes niet.**
 
-AI can put together a UI, but most of the time, it is not balanced, or there is no logic behind it. It can generate tests, but this does not imply that they are good ones. Good tests are more than just "check if it works." It is all about thinking in advance and taking into consideration scenarios such as:
+AI kan een UI in elkaar zetten, maar meestal is deze niet in balans of zit er geen logica achter. Het kan tests genereren, maar dat betekent niet dat het goede tests zijn. Goede tests zijn meer dan alleen 'controleren of het werkt'. Het gaat om vooruitdenken en rekening houden met scenario's zoals:
 
-- Edge cases
-- User behavior
-- Performance optimization
+- Randgevallen (edge cases)
+- Gebruikersgedrag
+- Prestatie-optimalisatie
 
-AI does not really _think_ like humans do. It works on patterns and predictions, but it does not reason, plan, or understand the purpose of the code. AI verifies what you ask it to verify, not what you fail to see. And that is the difference between testing and understanding.
+AI _denkt_ niet echt zoals mensen dat doen. Het werkt op basis van patronen en voorspellingen, maar het redeneert, plant of begrijpt het doel van de code niet. AI verifieert wat je vraagt te verifiëren, niet wat je over het hoofd ziet. En dat is het verschil tussen testen en begrijpen.
 
-## The Outsider's Perspective
+## Het perspectief van de buitenstaander
 
-Still, the idea that AI will replace programmers is something I keep hearing. People in IT who have never written a single line of code, or people who are completely out of the field, are those who mostly say that.
+Toch blijf ik horen dat AI programmeurs zal vervangen. Mensen in de IT die nog nooit een regel code hebben geschreven, of mensen die volledig buiten het vakgebied staan, zijn meestal degenen die dat zeggen.
 
-They fail to realize that programming is a lot more than just printing “Hello, World!” or changing the color of a button on a website. **Programming is mainly about finding the solutions to problems, creating the systems, and grasping how everything is connected.**
+Ze realiseren zich niet dat programmeren veel meer is dan alleen “Hello, World!” printen of de kleur van een knop op een website veranderen. **Programmeren gaat voornamelijk over het vinden van oplossingen voor problemen, het creëren van systemen en begrijpen hoe alles met elkaar verbonden is.**
 
-## AI as a Tool, Not a Crutch
+## AI als hulpmiddel, niet als kruk
 
-I also employ AI technology, though not in a manner whereby it does my work for me. Rather, I use it as a tool of learning. Sometimes it even turns out to be a better teacher than a human because it can very quickly demonstrate to me why a thing works or does not work.
+Ik gebruik ook AI-technologie, maar niet op een manier waarbij het mijn werk voor mij doet. Ik gebruik het eerder als leermiddel. Soms blijkt het zelfs een betere leraar te zijn dan een mens, omdat het me heel snel kan laten zien waarom iets wel of niet werkt.
 
-However, there are times when AI can divert your attention from the simplest or most obvious solution. It is always beneficial to go through the documentation on your own, as that is where true understanding is derived from.
+Er zijn echter momenten waarop AI je aandacht kan afleiden van de eenvoudigste of meest voor de hand liggende oplossing. Het is altijd nuttig om zelf de documentatie door te nemen, want daar komt echt begrip vandaan.
 
-## Real Programmers vs. Users
+## Echte programmeurs vs. gebruikers
 
-The fact is that people who fully depend on AI to write their code are not real programmers. They are merely users.
+Het feit is dat mensen die volledig afhankelijk zijn van AI om hun code te schrijven, geen echte programmeurs zijn. Het zijn slechts gebruikers.
 
-I witness such people on a daily basis: they use AI to generate code, then they copy and paste it. When you ask them to explain what it is that they have done, they can neither describe the simplest part of it nor give you any logical explanation. They do not grasp the logic, the structure, or the reasoning behind the code; they just execute it and hope it works.
+Ik zie zulke mensen dagelijks: ze gebruiken AI om code te genereren en kopiëren en plakken die vervolgens. Als je hen vraagt uit te leggen wat ze hebben gedaan, kunnen ze noch het eenvoudigste deel ervan beschrijven, noch enige logische verklaring geven. Ze begrijpen de logica, de structuur of de redenering achter de code niet; ze voeren het gewoon uit en hopen dat het werkt.
 
-A **real programmer** is one who thinks, understands, and creates with a specific intent. This is what distinguishes a good programmer from a normal one.
+Een **echte programmeur** is iemand die denkt, begrijpt en creëert met een specifieke intentie. Dit is wat een goede programmeur onderscheidt van een normale.
 
-## The Future of Coding
+## De toekomst van coderen
 
-So, do I believe AI will replace programmers, me included?
+Dus, geloof ik dat AI programmeurs zal vervangen, inclusief mijzelf?
 
-**The answer is no.**
+**Het antwoord is nee.**
 
-Not because I am scared of losing my job or because AI is becoming better at generating code, but because programming is both my passion and my future. Constructing software that users can trust requires more than just writing code that compiles. It requires people who know:
+Niet omdat ik bang ben mijn baan te verliezen of omdat AI beter wordt in het genereren van code, maar omdat programmeren zowel mijn passie als mijn toekomst is. Het bouwen van software die gebruikers kunnen vertrouwen vereist meer dan alleen het schrijven van code die compileert. Het vereist mensen die verstand hebben van:
 
-- Architecture
-- Scalability
-- Maintainability
-- The long-term vision of a project
+- Architectuur
+- Schaalbaarheid
+- Onderhoudbaarheid
+- De langetermijnvisie van een project
 
-It's about creating frameworks, handling intricate problems, and taking decisions that balance features, effectiveness, and sustainability. That kind of insight, accountability, and belonging is something an AI model is far from being able to imitate.
+Het gaat om het creëren van frameworks, het aanpakken van ingewikkelde problemen en het nemen van beslissingen die een balans vinden tussen functies, effectiviteit en duurzaamheid. Dat soort inzicht, verantwoordelijkheid en betrokkenheid is iets wat een AI-model nog lang niet kan imiteren.
 
-I am not trying to start a debate or argue with anyone. I am merely stating my experience and sharing my opinion about AI.
+Ik probeer geen debat te starten of ruzie te maken met iemand. Ik deel slechts mijn ervaring en mijn mening over AI.
