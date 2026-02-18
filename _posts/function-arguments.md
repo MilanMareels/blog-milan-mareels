@@ -135,3 +135,9 @@ Stop met het jongleren van argumenten. Stop ze in een doosje (een object) en gee
 ---
 
 _Houd er rekening mee dat dit voorbeeld in JavaScript is geschreven; TypeScript zal uiteraard strenger zijn wat betreft deze objectvelden, maar het principe blijft exact hetzelfde._
+
+### Citaat & Onderzoek
+
+Voor dit artikel en mijn dagelijkse werkzaamheden heb ik gebruikgemaakt van de volgende bronnen:
+
+- Gemini. (2026). [Gemini: Foto generatie](https://gemini.google.com). Goolge.
