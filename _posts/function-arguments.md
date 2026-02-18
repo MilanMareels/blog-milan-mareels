@@ -1,6 +1,6 @@
 ---
 title: "Waarom 'Function Arguments' de stille moordenaar zijn van je teststrategie"
-excerpt: "Als developers denken we bij 'testen' vaak direct aan Unit Tests. Maar de pijn van slecht functie-design voel je veel breder. Ontdek waarom het Parameter Object Pattern je redding is."
+excerpt: "Als developers denken we bij testen vaak direct aan unit tests. Maar de échte testbaarheid van je code begint al bij je function design."
 coverImage: "/assets/blog/function-arguments/function-arguments.webp"
 date: "2026-02-18T14:54:51.000Z"
 author:
@@ -10,41 +10,86 @@ ogImage:
   url: "/assets/blog/function-arguments/function-arguments.webp"
 ---
 
-Als developers denken we bij "testen" vaak direct aan Unit Tests. Maar de pijn van slecht functie-design (te veel losse argumenten) voel je veel breder. Het raakt je testen, je debugging sessies en zelfs de snelheid waarmee je nieuwe features kunt uitrollen zonder de boel te slopen.
+Als developers denken we bij "testen" vaak meteen aan unit tests, frameworks en coverage percentages. Maar echte testbaarheid begint veel eerder: bij je function signatures.
 
-Laten we kijken waarom het Parameter Object Pattern (alles in één object stoppen) je redding is voor je testen.
+Slecht functie-design vooral functies met veel losse argumenten heeft een directe impact op:
 
-## 1. Het probleem: De "Domino-steen" update
+- test stabiliteit
+- debugging snelheid
+- uitbreidbaarheid van features
+- mockbaarheid van dependencies
 
-Stel je hebt een functie `createUser(name, email, age)`. Je hebt hier 50 testen voor geschreven verspreid over je hele applicatie.
+Met andere woorden: **slechte argument-structuur creëert verborgen test debt.**
 
-Nu komt de business met een wijziging: _"We moeten ook weten of iemand ingeschreven is voor de nieuwsbrief."_
+---
 
-**De Oude Situatie (Losse Argumenten):**
-Je verandert de functie naar `createUser(name, email, age, newsletterOptIn)`.
+## 1. Het probleem: de "Domino-update"
 
-- **Gevolg:** BAM. 50 testen staan op rood.
-- **De fix:** Je moet al je testbestanden openen en overal `false` of `true` achteraan plakken. Dit is niet testen, dit is bezigheidstherapie.
+Stel je hebt een functie:
 
-**De Nieuwe Situatie (Parameter Object):**
-Je functie was al `createUser({ name, email, age, newsletterOptIn })`. Je verandert de logica zodat hij nu `newsletterOptIn` uitleest uit het object.
+```js
+createUser(name, email, age);
+```
 
-- **Gevolg:** 0 testen breken. De bestaande testen geven simpelweg die property niet mee, en (als je code goed is) valt hij terug op een default waarde of `undefined`.
-- **De fix:** Je schrijft één of een paar nieuwe tests voor de nieuwe functionaliteit. De rest blijft groen.
+Je hebt hier 50 tests voor geschreven verspreid over je applicatie.
 
-## 2. Leesbaarheid in je (Unit)Tests
+Nu komt er een wijziging:
 
-Bij unit tests wil je in één oogopslag begrijpen wat er getest wordt. Als je functies met losse argumenten aanroept, worden foutmeldingen snel onduidelijk.
+"We moeten ook weten of iemand ingeschreven is voor de nieuwsbrief."
 
-Bijvoorbeeld een error log met losse parameters:
+---
+
+### Oude situatie - losse argumenten
+
+Je verandert de functie naar:
+
+```js
+createUser(name, email, age, newsletterOptIn);
+```
+
+**Gevolg**
+
+- 50 tests breken
+- je moet overal parameters toevoegen
+- je test failures zeggen niets over echte regressions
+
+Dit is geen testen. Dit is bezigheidstherapie.
+
+---
+
+### Nieuwe situatie - parameter object
+
+Je functie was:
+
+```js
+createUser({ name, email, age, newsletterOptIn });
+```
+
+Je voegt enkel logica toe.
+
+**Gevolg**
+
+- 0 tests breken
+- bestaande tests blijven werken
+- je schrijft alleen tests voor de nieuwe feature
+
+Je tests falen alleen wanneer er echt gedrag verandert, en dat is precies wat je wil.
+
+---
+
+## 2. Leesbaarheid van tests en logs
+
+Tests moeten in één oogopslag begrijpelijk zijn.
+
+Losse parameters:
 
 ```text
 Error in getUserData: invalid argument. Arguments: (456, true, null)
 ```
 
-Je moet nu opzoeken waar die waarden voor staan. Is `456` een userId? Is `true` een admin-flag? Is `null` een optionele filter?
+Je moet documentatie of code opzoeken om te weten wat dit betekent.
 
-Met een object ziet dat er zo uit:
+Met object parameters:
 
 ```json
 Error in getUserData. Arguments: {
@@ -54,90 +99,103 @@ Error in getUserData. Arguments: {
 }
 ```
 
-Nu zie je meteen wat er getest werd. Je weet direct dat het om userId 456 gaat en wat elke waarde betekent. Je hoeft niet te gokken of documentatie te checken. Dat maakt tests sneller te begrijpen en fouten veel makkelijker te debuggen.
+Nu zie je meteen:
 
-## 3. Code Voorbeelden & Tips
+- wat getest werd
+- welke input gebruikt werd
+- wat de intentie van de test was
 
-Hoe pas je dit toe voor robuustere testen?
-
-### Tip 1: Gebruik "Destructuring" met Default Waardes
-
-Dit is de sleutel tot "Lazy Testing" (op de goede manier). Je hoeft in je test alleen mee te geven waar de test over gaat.
-
-**Slechte Code (Testen is zwaar):**
-
-```javascript
-// Functie
-function setupScreen(width, height, fullScreen, darkMode, title) {
-  // ...
-}
-
-// Test: Ik wil alleen de 'title' testen, maar moet ALLES invullen
-setupScreen(1920, 1080, false, false, "Home");
-```
-
-**Goede Code (Testen is makkelijk):**
-
-```javascript
-// Functie: We zetten defaults voor alles wat niet cruciaal is
-function setupScreen({ width = 800, height = 600, fullScreen = false, darkMode = false, title = "Untitled" } = {}) {
-  // ... logica
-}
-
-// Test: Focus puur op wat we testen
-setupScreen({ title: "Home" }); // De rest wordt automatisch ingevuld!
-setupScreen({ darkMode: true }); // Test alleen darkmode
-```
-
-### Tip 2: De "Test Object Factory"
-
-Als je vaak complexe objecten moet aanmaken voor testen (bijvoorbeeld een User object met 20 velden), maak dan een helper functie.
-
-```javascript
-// test-helpers.js
-export const createFakeUser = (overrides = {}) => ({
-  id: 1,
-  name: "Test Henk",
-  email: "henk@test.com",
-  role: "ADMIN",
-  status: "ACTIVE",
-  lastLogin: new Date(),
-  ...overrides, // Hier overschrijven we de defaults met jouw specifieke testdata
-});
-```
-
-Je testbestand:
-
-```javascript
-import { createFakeUser } from "./test-helpers";
-
-it("should block banned users", () => {
-  // We hoeven ons geen zorgen te maken over naam, email, id, etc.
-  // We focussen puur op de status.
-  const bannedUser = createFakeUser({ status: "BANNED" });
-
-  expect(login(bannedUser)).toBe(false);
-});
-```
-
-## Conclusie
-
-> _"Arguments carry mental weight."_
-
-In testen vertaalt dit "mentale gewicht" zich naar fragiliteit. Elke keer als je een argument toevoegt aan een lijst, maak je je test-suite breekbaarder. Door over te stappen op objecten (named parameters), maak je je testen:
-
-- **Robuust:** Ze breken niet bij uitbreidingen.
-- **Leesbaar:** Je ziet direct wat `true` of `false` betekent.
-- **Flexibel:** Je test alleen wat nodig is dankzij defaults.
-
-Stop met het jongleren van argumenten. Stop ze in een doosje (een object) en geef dat doosje door. Je toekomstige zelf (die over 6 maanden de tests moet fixen) zal je dankbaar zijn.
+Dit verkort debugging-tijd drastisch, iets wat elke tester en developer onmiddellijk voelt.
 
 ---
 
-_Houd er rekening mee dat dit voorbeeld in JavaScript is geschreven; TypeScript zal uiteraard strenger zijn wat betreft deze objectvelden, maar het principe blijft exact hetzelfde._
+## 3. Code Tips voor robuustere tests
 
-### Citaat & Onderzoek
+### Tip 1 - Destructuring + defaults
 
-Voor dit artikel en mijn dagelijkse werkzaamheden heb ik gebruikgemaakt van de volgende bronnen:
+Laat tests enkel invullen wat relevant is.
 
-- Gemini. (2026). [Gemini: Foto generatie](https://gemini.google.com). Goolge.
+Slechte versie:
+
+```js
+setupScreen(1920, 1080, false, false, "Home");
+```
+
+Goede versie:
+
+```js
+function setupScreen({ width = 800, height = 600, fullScreen = false, darkMode = false, title = "Untitled" } = {}) {}
+```
+
+Tests:
+
+```js
+setupScreen({ title: "Home" });
+setupScreen({ darkMode: true });
+```
+
+Focus op intentie, niet op boilerplate.
+
+---
+
+### Tip 2 - Test Object Factory
+
+Voor complexe testdata:
+
+```js
+export const createFakeUser = (overrides = {}) => ({
+  id: 1,
+  name: "Test User",
+  email: "test@example.com",
+  role: "ADMIN",
+  status: "ACTIVE",
+  lastLogin: new Date(),
+  ...overrides,
+});
+```
+
+Gebruik:
+
+```js
+const bannedUser = createFakeUser({ status: "BANNED" });
+```
+
+Tests blijven leesbaar én onderhoudbaar.
+
+---
+
+## 5. Wanneer je dit NIET moet doen
+
+Zoals elk pattern is dit geen silver bullet.
+
+Gebruik geen parameter object wanneer:
+
+- je functie maar 1-2 parameters heeft
+- performance extreem kritisch is
+- je een publieke API hebt waarvan signature stabiliteit contractueel vastligt
+
+Goede engineering is context-afhankelijk.
+
+---
+
+## Conclusie
+
+_"Arguments carry mental weight."_
+
+Elke extra parameter vergroot de cognitieve load van iedereen die je code leest, test of debugt.
+
+Door parameters in objecten te groeperen maak je je code:
+
+- robuuster
+- leesbaarder
+- uitbreidbaarder
+- testvriendelijker
+
+Stop dus met argumenten jongleren.
+Stop ze in een object en geef dat door.
+
+Je toekomstige zelf en je test suite zullen je dankbaar zijn.
+
+---
+
+_Opmerking: voorbeelden zijn in JavaScript, maar het principe geldt voor elke taal. In TypeScript wordt het voordeel nog groter dankzij compile-time validatie van input shapes._
