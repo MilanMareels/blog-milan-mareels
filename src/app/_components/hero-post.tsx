@@ -34,7 +34,10 @@ export function HeroPost({ title, coverImage, date, excerpt, author, slug }: Pro
           <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
 
           <div className="mb-6">
-            <Link href={`/posts/${slug}`} className="bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-8 duration-200 transition-colors inline-block">
+            <Link
+              href={`/posts/${slug}`}
+              className="bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-8 duration-200 transition-colors inline-block"
+            >
               Lees Meer
             </Link>
           </div>
