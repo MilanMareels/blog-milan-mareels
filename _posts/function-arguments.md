@@ -2,7 +2,7 @@
 title: "Waarom 'Function Arguments' de stille moordenaar zijn van je teststrategie"
 excerpt: "Als developers denken we bij testen vaak direct aan unit tests. Maar de échte testbaarheid van je code begint al bij je function design."
 coverImage: "/assets/blog/function-arguments/function-arguments.webp"
-date: "2026-02-18T14:54:51.000Z"
+date: "2026-02-19T14:54:51.000Z"
 author:
   name: Milan Mareels
   picture: "/assets/blog/authors/milan-mareels.webp"
