@@ -11,8 +11,6 @@ services:
       - "3003:3000"
     depends_on:
       - mongodb-server
-    env_file:
-      - .env
 
   mongodb-server:
     image: mongo:latest
