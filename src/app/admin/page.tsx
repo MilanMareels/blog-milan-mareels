@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient";
 
 type Comment = {
-  id: number;
+  id: string;
   created_at: string;
   slug: string;
   author: string;
@@ -13,9 +12,7 @@ type Comment = {
 };
 
 export default function AdminPage() {
-  const [session, setSession] = useState<any>(null);
-
-  const [email, setEmail] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
@@ -26,13 +23,11 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<"pending" | "approved">("pending");
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      if (session) {
-        fetchPendingComments();
-        fetchApprovedComments();
-      }
-    });
+    if (localStorage.getItem("adminAuth") === "true") {
+      setIsAuthenticated(true);
+      fetchPendingComments();
+      fetchApprovedComments();
+    }
   }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -40,78 +35,87 @@ export default function AdminPage() {
     setLoading(true);
     setLoginError("");
 
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
 
-    if (error) {
-      setLoginError("Login failed: " + error.message);
-    } else {
-      setSession(data.session);
-      fetchPendingComments();
-      fetchApprovedComments();
+      if (res.ok) {
+        setIsAuthenticated(true);
+        localStorage.setItem("adminAuth", "true");
+        fetchPendingComments();
+        fetchApprovedComments();
+      } else {
+        setLoginError("Incorrect password");
+      }
+    } catch (error) {
+      setLoginError("Login failed");
     }
     setLoading(false);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("adminAuth");
+    setIsAuthenticated(false);
+  };
+
   const fetchPendingComments = async () => {
-    const { data } = await supabase.from("comments").select("*").eq("is_approved", false).order("created_at", { ascending: false });
-    if (data) setPendingComments(data);
+    const res = await fetch("/api/comments?is_approved=false");
+    const data = await res.json();
+    setPendingComments(data);
   };
 
   const fetchApprovedComments = async () => {
-    const { data } = await supabase.from("comments").select("*").eq("is_approved", true).order("created_at", { ascending: false }); // Nieuwste eerst
-    if (data) setApprovedComments(data);
+    const res = await fetch("/api/comments?is_approved=true");
+    const data = await res.json();
+    setApprovedComments(data);
   };
 
-  const approveComment = async (id: number) => {
+  const approveComment = async (id: string) => {
     if (!window.confirm("Are you sure you want to APPROVE this comment?")) return;
 
-    const { error } = await supabase.from("comments").update({ is_approved: true }).eq("id", id);
+    await fetch("/api/comments", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, is_approved: true }),
+    });
 
-    if (!error) {
-      fetchPendingComments();
-      fetchApprovedComments();
-    }
+    fetchPendingComments();
+    fetchApprovedComments();
   };
 
-  const deleteComment = async (id: number) => {
+  const deleteComment = async (id: string) => {
     if (!window.confirm("Are you sure you want to DELETE this comment permanently?")) return;
 
-    const { error } = await supabase.from("comments").delete().eq("id", id);
+    await fetch(`/api/comments?id=${id}`, { method: "DELETE" });
 
-    if (!error) {
-      fetchPendingComments();
-      fetchApprovedComments();
-    }
+    fetchPendingComments();
+    fetchApprovedComments();
   };
 
-  const groupedComments = approvedComments.reduce((acc, comment) => {
-    if (!acc[comment.slug]) {
-      acc[comment.slug] = [];
-    }
-    acc[comment.slug].push(comment);
-    return acc;
-  }, {} as Record<string, Comment[]>);
+  const groupedComments = approvedComments.reduce(
+    (acc, comment) => {
+      if (!acc[comment.slug]) {
+        acc[comment.slug] = [];
+      }
+      acc[comment.slug].push(comment);
+      return acc;
+    },
+    {} as Record<string, Comment[]>,
+  );
 
-  if (!session) {
+  if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <form onSubmit={handleLogin} className="bg-white p-8 rounded shadow-md w-96">
           <h1 className="text-2xl font-bold mb-6 text-center">Admin Login</h1>
           {loginError && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4 text-sm">{loginError}</div>}
-          <div className="mb-4">
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
           <div className="mb-6">
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Admin Password"
               className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-black"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -128,10 +132,9 @@ export default function AdminPage() {
 
   return (
     <div className="max-w-5xl mx-auto p-10 min-h-screen">
-      {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Comment Dashboard</h1>
-        <button onClick={() => supabase.auth.signOut().then(() => setSession(null))} className="bg-gray-200 text-black px-4 py-2 rounded hover:bg-gray-300 text-sm font-semibold">
+        <button onClick={handleLogout} className="bg-gray-200 text-black px-4 py-2 rounded hover:bg-gray-300 text-sm font-semibold">
           Log out
         </button>
       </div>
@@ -186,7 +189,6 @@ export default function AdminPage() {
               <p className="text-gray-500 text-lg">No approved comments found yet.</p>
             </div>
           ) : (
-            // Loop door de slugs (Post titels)
             Object.keys(groupedComments).map((slug) => (
               <div key={slug} className="mb-10">
                 <h2 className="text-xl font-bold bg-gray-100 p-3 rounded mb-4 border border-gray-200">

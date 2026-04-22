@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient";
 
 type Comment = {
-  id: number;
+  id: string;
   created_at: string;
   author: string;
   content: string;
@@ -23,9 +22,13 @@ export default function CommentSection({ slug }: { slug: string }) {
   }, [slug]);
 
   const fetchComments = async () => {
-    const { data } = await supabase.from("comments").select("*").eq("slug", slug).eq("is_approved", true).order("created_at", { ascending: false });
-
-    if (data) setComments(data);
+    try {
+      const res = await fetch(`/api/comments?slug=${slug}&is_approved=true`);
+      const data = await res.json();
+      setComments(data);
+    } catch (error) {
+      console.error("Fout bij ophalen comments:", error);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,13 +37,22 @@ export default function CommentSection({ slug }: { slug: string }) {
     setLoading(true);
     setMessage("");
 
-    const { error } = await supabase.from("comments").insert([{ slug, author, content }]);
+    try {
+      const res = await fetch("/api/comments", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, author, content }),
+      });
 
-    if (!error) {
-      setAuthor("");
-      setContent("");
-      setMessage("Thanks! Your comment has been submitted and is awaiting approval.");
-    } else {
+      if (res.ok) {
+        setAuthor("");
+        setContent("");
+        setMessage("Thanks! Your comment has been submitted and is awaiting approval.");
+        fetchComments(); // Ververs direct als het mag van jou, of laat het zo staan voor goedkeuring
+      } else {
+        setMessage("Something went wrong. Please try again.");
+      }
+    } catch (error) {
       console.error(error);
       setMessage("Something went wrong. Please try again.");
     }
