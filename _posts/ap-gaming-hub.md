@@ -77,7 +77,7 @@ Nu de basis staat als een huis, werken [Stijn](https://www.linkedin.com/in/stijn
 
 Als je een applicatie bouwt, leer je al snel de realiteit van gebruikersstatistieken kennen. Toen we de Hub openden, zaten we in een enorme 'hype-fase'. In de piekmaand februari zagen we een gigantische toestroom van maar liefst 600 tot 700 actieve gebruikers. Het systeem draaide overuren.
 
-Inmiddels is de initiële nieuwigheid er een beetje af en zitten we in een stabiele fase met zo'n 300 actieve gebruikers per maand. Aanvankelijk voelde die daling als een tegenslag, maar als developer besef je snel dat dit de normale levenscyclus van software is. 300 studenten die maandelijks structureel jullie app gebruiken is een fantastische metric.
+Inmiddels is de initiële nieuwigheid er een beetje af en zitten we in een stabiele fase met zo'n 300 actieve gebruikers per maand. Aanvankelijk voelde die daling als een tegenslag, maar als developer besef je snel dat dit de normale levenscyclus van software is. 300 studenten die maandelijks structureel jullie app gebruiken is een fantastische metric. **Daar komt nog bij dat we inmiddels de mijlpaal van 200+ gemaakte reserveringen zijn gepasseerd! Dit bewijst dat de kern van ons platform - het reserveringssysteem - een groot succes is en actief wordt benut door de community.**
 
 ---
 
