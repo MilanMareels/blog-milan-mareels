@@ -14,7 +14,7 @@ type Comment = {
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Staat standaard op true voor de initiële auth check
   const [loginError, setLoginError] = useState("");
 
   const [pendingComments, setPendingComments] = useState<Comment[]>([]);
@@ -22,13 +22,25 @@ export default function AdminPage() {
 
   const [activeTab, setActiveTab] = useState<"pending" | "approved">("pending");
 
+  // Check bij het laden of de gebruiker al een geldige HTTP-only cookie heeft
   useEffect(() => {
-    if (localStorage.getItem("adminAuth") === "true") {
-      setIsAuthenticated(true);
-      fetchPendingComments();
-      fetchApprovedComments();
-    }
+    checkAuth();
   }, []);
+
+  const checkAuth = async () => {
+    try {
+      const res = await fetch("/api/auth/check");
+      if (res.ok) {
+        setIsAuthenticated(true);
+        fetchPendingComments();
+        fetchApprovedComments();
+      }
+    } catch (error) {
+      console.error("Auth check failed");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,33 +56,43 @@ export default function AdminPage() {
 
       if (res.ok) {
         setIsAuthenticated(true);
-        localStorage.setItem("adminAuth", "true");
         fetchPendingComments();
         fetchApprovedComments();
       } else {
-        setLoginError("Incorrect password");
+        setLoginError("Incorrect wachtwoord");
       }
     } catch (error) {
-      setLoginError("Login failed");
+      setLoginError("Login mislukt");
     }
     setLoading(false);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("adminAuth");
+  const handleLogout = async () => {
+    // Roep de logout API aan om de cookie te verwijderen
+    await fetch("/api/logout", { method: "POST" });
     setIsAuthenticated(false);
+    setPendingComments([]);
+    setApprovedComments([]);
+    setPassword("");
   };
 
   const fetchPendingComments = async () => {
     const res = await fetch("/api/comments?is_approved=false");
-    const data = await res.json();
-    setPendingComments(data);
+    if (res.ok) {
+      const data = await res.json();
+      setPendingComments(data);
+    } else {
+      // Als we hier een error krijgen (bijv 401), gooi de gebruiker eruit
+      setIsAuthenticated(false);
+    }
   };
 
   const fetchApprovedComments = async () => {
     const res = await fetch("/api/comments?is_approved=true");
-    const data = await res.json();
-    setApprovedComments(data);
+    if (res.ok) {
+      const data = await res.json();
+      setApprovedComments(data);
+    }
   };
 
   const approveComment = async (id: string) => {
@@ -106,6 +128,16 @@ export default function AdminPage() {
     {} as Record<string, Comment[]>,
   );
 
+  // Laadscherm voor de initiële check
+  if (loading && !isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <p className="text-gray-500 text-lg font-medium animate-pulse">Bezig met laden...</p>
+      </div>
+    );
+  }
+
+  // Login scherm
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -130,11 +162,12 @@ export default function AdminPage() {
     );
   }
 
+  // Admin Dashboard
   return (
     <div className="max-w-5xl mx-auto p-10 min-h-screen">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Comment Dashboard</h1>
-        <button onClick={handleLogout} className="bg-gray-200 text-black px-4 py-2 rounded hover:bg-gray-300 text-sm font-semibold">
+        <button onClick={handleLogout} className="bg-gray-200 text-black px-4 py-2 rounded hover:bg-gray-300 text-sm font-semibold transition-colors">
           Log out
         </button>
       </div>
@@ -142,13 +175,13 @@ export default function AdminPage() {
       <div className="flex gap-4 border-b border-gray-200 mb-8">
         <button
           onClick={() => setActiveTab("pending")}
-          className={`pb-3 px-2 font-bold text-lg ${activeTab === "pending" ? "border-b-2 border-black text-black" : "text-gray-400 hover:text-gray-600"}`}
+          className={`pb-3 px-2 font-bold text-lg transition-colors ${activeTab === "pending" ? "border-b-2 border-black text-black" : "text-gray-400 hover:text-gray-600"}`}
         >
           Pending Reviews ({pendingComments.length})
         </button>
         <button
           onClick={() => setActiveTab("approved")}
-          className={`pb-3 px-2 font-bold text-lg ${activeTab === "approved" ? "border-b-2 border-black text-black" : "text-gray-400 hover:text-gray-600"}`}
+          className={`pb-3 px-2 font-bold text-lg transition-colors ${activeTab === "approved" ? "border-b-2 border-black text-black" : "text-gray-400 hover:text-gray-600"}`}
         >
           Approved Archive
         </button>
@@ -169,10 +202,10 @@ export default function AdminPage() {
                 </div>
                 <p className="mb-6 text-gray-800 whitespace-pre-wrap leading-relaxed">{comment.content}</p>
                 <div className="flex justify-end gap-3">
-                  <button onClick={() => deleteComment(comment.id)} className="bg-white border border-red-600 text-red-600 px-5 py-2 rounded font-medium text-sm hover:bg-red-50">
+                  <button onClick={() => deleteComment(comment.id)} className="bg-white border border-red-600 text-red-600 px-5 py-2 rounded font-medium text-sm hover:bg-red-50 transition-colors">
                     Delete
                   </button>
-                  <button onClick={() => approveComment(comment.id)} className="bg-black text-white px-6 py-2 rounded font-medium text-sm hover:bg-neutral-800">
+                  <button onClick={() => approveComment(comment.id)} className="bg-black text-white px-6 py-2 rounded font-medium text-sm hover:bg-neutral-800 transition-colors">
                     Approve
                   </button>
                 </div>
@@ -207,7 +240,7 @@ export default function AdminPage() {
                       </div>
                       <button
                         onClick={() => deleteComment(comment.id)}
-                        className="text-red-500 text-xs font-bold border border-red-200 px-3 py-1 rounded hover:bg-red-50 hover:border-red-500 whitespace-nowrap"
+                        className="text-red-500 text-xs font-bold border border-red-200 px-3 py-1 rounded hover:bg-red-50 hover:border-red-500 whitespace-nowrap transition-colors"
                       >
                         Delete
                       </button>

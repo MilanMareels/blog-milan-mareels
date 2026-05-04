@@ -1,12 +1,27 @@
 import { connectMongoDB } from "@/app/lib/mongodb";
 import { NextResponse } from "next/server";
 import { Comment } from "@/app/models/Comment";
+import { cookies } from "next/headers";
+import { verifyToken } from "@/lib/auth";
+
+// Helper functie om in elke route admin rechten te checken
+async function checkAdminAuth() {
+  const token = (await cookies()).get("admin_token")?.value;
+  if (!token) return false;
+  const payload = await verifyToken(token);
+  return !!payload;
+}
 
 export async function GET(request: Request) {
   await connectMongoDB();
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get("slug");
   const is_approved = searchParams.get("is_approved");
+
+  if (is_approved === "false") {
+    const isAdmin = await checkAdminAuth();
+    if (!isAdmin) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
 
   let query: any = {};
   if (slug) query.slug = slug;
@@ -34,6 +49,9 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
+  const isAdmin = await checkAdminAuth();
+  if (!isAdmin) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+
   await connectMongoDB();
   const { id, is_approved } = await request.json();
   await Comment.findByIdAndUpdate(id, { is_approved });
@@ -41,6 +59,9 @@ export async function PUT(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  const isAdmin = await checkAdminAuth();
+  if (!isAdmin) return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+
   await connectMongoDB();
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id");

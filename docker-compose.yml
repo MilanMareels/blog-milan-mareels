@@ -5,6 +5,7 @@ services:
       args:
         - MONGODB_URI=${MONGODB_URI}
         - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+        - JWT_SECRET=${JWT_SECRET}
     container_name: website-blog-milan-mareels
     restart: unless-stopped
     ports:
