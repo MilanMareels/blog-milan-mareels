@@ -2,7 +2,7 @@
 title: "Mijn DIY Homelab: Van Houten Serverkast tot Proxmox Cluster & Custom Koeling"
 excerpt: "Waarom maandelijks honderden euro's betalen voor externe cloud-servers als je met creativiteit, hardware en code je eigen datacenter kunt bouwen?"
 coverImage: "/assets/blog/homelab/cover.webp"
-date: "2026-05-04T19:55:00.000Z"
+date: "2026-05-05T19:55:00.000Z"
 author:
   name: Milan Mareels
   picture: "/assets/blog/authors/milan-mareels.webp"
@@ -116,7 +116,7 @@ Daarnaast geeft het me de ultieme vrijheid. Ik kan mijn eigen projecten volledig
 
 Dit homelab begon ooit als een klein experimenteel project om wat te leren over Linux en Docker, maar het is inmiddels uitgegroeid tot een krachtig, professioneel en onmisbaar ecosysteem. Het is de perfecte mix van mijn sterke punten (software, netwerken, infrastructuur) en de keiharde realiteit van mijn zwakke punten (kuch, houtbewerking en 3D-printen).
 
-Het bewijst echter dat je geen perfecte meubelmaker hoeft te zijn om een professioneel, efficiënt datacenter te draaien. Het systeem biedt enorme schaalbaarheid dankzij het Proxmox-cluster, zekerheid door de geautomatiseerde deployments en monitoring, en het vormt de perfecte ruggengraat voor zowel de websites van Lannie als voor wetenschappelijk onderzoek. Het is self-hosted, razendsnel, schaalbaar en - het allerbelangrijkste - honderd procent van mij.
+Het bewijst echter dat je geen perfecte meubelmaker hoeft te zijn om een professioneel, efficiënt datacenter te draaien. Het systeem biedt enorme schaalbaarheid dankzij het Proxmox-cluster, zekerheid door de geautomatiseerde deployments en monitoring, en het vormt de perfecte ruggengraat voor zowel de websites van Lannie als voor wetenschappelijk onderzoek. Het is self-hosted, razendsnel, schaalbaar en - het allerbelangrijkste - honderd procent van mij. (Oh, en fun fact: de blog die je op dit moment aan het lezen bent, draait dus ook gewoon op één van deze servers! :O)
 
 Op naar de volgende upgrade... en hopelijk eerst de tijd vinden om die 3D-printer opnieuw te kalibreren zodat de switch-houder eindelijk wél recht hangt!
 
