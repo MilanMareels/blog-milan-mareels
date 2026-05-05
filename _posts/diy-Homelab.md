@@ -2,7 +2,7 @@
 title: "Mijn DIY Homelab: Van Houten Serverkast tot Proxmox Cluster & Custom Koeling"
 excerpt: "Waarom maandelijks honderden euro's betalen voor externe cloud-servers als je met creativiteit, hardware en code je eigen datacenter kunt bouwen?"
 coverImage: "/assets/blog/homelab/cover.webp"
-date: "2026-05-05T19:55:00.000Z"
+date: "2026-05-06T19:55:00.000Z"
 author:
   name: Milan Mareels
   picture: "/assets/blog/authors/milan-mareels.webp"
@@ -43,7 +43,7 @@ Alles is aangesloten op een 5-poorts gigabit switch. Om te voorkomen dat het een
 
 ## De Brains: Een Proxmox Cluster
 
-Hoewel de behuizing misschien een lichte "beunhaas"-vibe heeft, is de binnenkant pure digitale perfectie. Om de hardware van beide Thin Clients maximaal en efficiënt te benutten, draaien de servers op **Proxmox VE** in een clusteropstelling.
+Hoewel de behuizing misschien basic er uit ziet, is de binnenkant pure digitale perfectie. Om de hardware van beide Thin Clients maximaal en efficiënt te benutten, draaien de servers op **Proxmox VE** in een clusteropstelling.
 
 Virtualisatie is de absolute sleutel tot het succes van dit project. Proxmox stelt me in staat om de rekenkracht, het geheugen en de opslag dynamisch te verdelen over diverse Ubuntu Virtual Machines (VM's) en lichte Docker/Portainer containers. Bovendien kan ik via de cluster-interface beide fysieke machines vanuit één overzichtelijk dashboard beheren.
 
@@ -114,7 +114,7 @@ Daarnaast geeft het me de ultieme vrijheid. Ik kan mijn eigen projecten volledig
 
 ## Conclusie & Wat is de Volgende Stap?
 
-Dit homelab begon ooit als een klein experimenteel project om wat te leren over Linux en Docker, maar het is inmiddels uitgegroeid tot een krachtig, professioneel en onmisbaar ecosysteem. Het is de perfecte mix van mijn sterke punten (software, netwerken, infrastructuur) en de keiharde realiteit van mijn zwakke punten (kuch, houtbewerking en 3D-printen).
+Dit homelab begon ooit als een klein experimenteel project om wat te leren over Linux en Docker, maar het is inmiddels uitgegroeid tot een krachtig, professioneel en onmisbaar ecosysteem. Het is de perfecte mix van mijn sterke punten (software, netwerken, infrastructuur) en de keiharde realiteit van mijn zwakke punten (houtbewerking en 3D-printen).
 
 Het bewijst echter dat je geen perfecte meubelmaker hoeft te zijn om een professioneel, efficiënt datacenter te draaien. Het systeem biedt enorme schaalbaarheid dankzij het Proxmox-cluster, zekerheid door de geautomatiseerde deployments en monitoring, en het vormt de perfecte ruggengraat voor zowel de websites van Lannie als voor wetenschappelijk onderzoek. Het is self-hosted, razendsnel, schaalbaar en - het allerbelangrijkste - honderd procent van mij. (Oh, en fun fact: de blog die je op dit moment aan het lezen bent, draait dus ook gewoon op één van deze servers! :O)
 
