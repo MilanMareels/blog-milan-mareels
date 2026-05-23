@@ -35,7 +35,7 @@ Omdat de buitenkant natuurlijk niet het hele verhaal vertelt, is hier ook een bl
 De basis van mijn hardware bestaat niet uit stroomslurpende, luidruchtige enterprise-servers, maar uit twee uiterst efficiënte en stille Thin Clients (Tiny PC's):
 
 - **Node 1 (PVE):** Een Intel i5-6500 met 16 GB RAM. Dit is het werkpaard voor de zware productieomgevingen.
-- **Node 2 (PVE2):** Een Intel i5-6400U met 14 GB RAM. Perfect voor de meer algemene workloads, containers en achtergrondprocessen.
+- **Node 2 (PVE2):** Een Intel i5-6400U met 12 GB RAM. Perfect voor de meer algemene workloads, containers en achtergrondprocessen.
 
 Alles is aangesloten op een 5-poorts gigabit switch. Om te voorkomen dat het een onoverzichtelijke spaghetti aan kabels werd, heb ik een eigen, compact patchpanel geïnstalleerd. Dit zorgt voor een strakke afwerking en maakt het troubleshooten een stuk eenvoudiger als er ooit een kabelbreuk mocht zijn.
 
