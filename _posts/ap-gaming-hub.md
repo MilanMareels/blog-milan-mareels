@@ -10,7 +10,7 @@ ogImage:
   url: "/assets/blog/ap-gaming-hub/ap-gaming-hub.webp"
 ---
 
-Toen AP Hogeschool onlangs [de deuren opende van de gloednieuwe, fysieke Gaming Hub](https://www.ap.be/artikel/ap-hogeschool-opent-gaming-hub-voor-en-door-studenten) op de campus, was de boodschap direct duidelijk: dit wordt een plek vóór en dóór studenten. Als software developer ben je tijdens je studie vaak op zoek naar projecten die de theorie overstijgen. Je wilt iets bouwen dat er echt toe doet en daadwerkelijk in de echte wereld gebruikt wordt. De opening van de Hub was voor mij de perfecte kans.
+Haklo Toen AP Hogeschool onlangs [de deuren opende van de gloednieuwe, fysieke Gaming Hub](https://www.ap.be/artikel/ap-hogeschool-opent-gaming-hub-voor-en-door-studenten) op de campus, was de boodschap direct duidelijk: dit wordt een plek vóór en dóór studenten. Als software developer ben je tijdens je studie vaak op zoek naar projecten die de theorie overstijgen. Je wilt iets bouwen dat er echt toe doet en daadwerkelijk in de echte wereld gebruikt wordt. De opening van de Hub was voor mij de perfecte kans.
 
 Als Lead Software Developer (op vrijwillige basis) voor de AP Gaming Community kreeg ik de verantwoordelijkheid om het digitale fundament van deze indrukwekkende ruimte te bouwen. Wat begon als een soloproject dat ik volledig vanaf nul heb opgezet, is inmiddels uitgegroeid tot een strakke samenwerking.
 
