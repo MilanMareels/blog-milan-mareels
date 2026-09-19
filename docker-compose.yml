@@ -10,6 +10,11 @@ services:
     restart: unless-stopped
     ports:
       - "3003:3000"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
     depends_on:
       - mongodb-server
 
